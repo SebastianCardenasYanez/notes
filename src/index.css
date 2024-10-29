@@ -1,0 +1,217 @@
+@font-face {
+    font-family: 'Nunito semiBlod';
+    src: url(storage/fonts/Nunito/Nunito-SemiBold.ttf);
+  }
+  
+  @font-face {
+    font-family: 'Nunito light';
+    src: url(storage/fonts/Nunito/Nunito-Light.ttf);
+  }
+  
+  @font-face {
+    font-family: 'Nunito regular';
+    src: url(storage/fonts/Nunito/Nunito-Regular.ttf);
+  }
+
+.welcome-container {
+    min-height: 99vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #252525;
+    color: #E5E5E5;
+}
+  .welcome-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: 'Nunito semiBlod', sans-serif;
+}
+  .welcome-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: 'Nunito regular', sans-serif;
+}
+  .button-container {
+    display: flex;
+    gap: 1rem;
+}
+  .welcome-button {
+    background-color: #E5E5E5;
+    color: #252525;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-family: 'Nunito regular', sans-serif;
+    border: none;
+    border-radius: 8px;
+}
+  .welcome-button:hover {
+    background-color: #CCCCCC;
+}
+
+
+
+
+.signup-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #252525;
+}
+.signup-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 15px 15px -3px rgba(0, 0, 0, 0.404), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    background-color: #252525;
+    color: #E5E5E5;
+}
+.signup-title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-family: 'Nunito semiBlod', sans-serif;
+}
+.form-group {
+    margin-bottom: 1rem;
+    font-family: 'Nunito regular', sans-serif;
+}
+.form-input {
+    width: 100%;
+    margin-top: 0.25rem;
+    background-color: #252525;
+    border-radius: 8px;
+    height: 3.5vh;
+    border-style: solid;
+    border-color: #E5E5E5;
+    font-family: 'Nunito regular', sans-serif;
+    color: #E5E5E5;
+}
+.submit-button {
+    width: 100%;
+    height: 5vh;
+    background-color: #E5E5E5;
+    font-family: 'Nunito regular', sans-serif;
+    border-radius: 8px;
+    border: none;
+    color: #252525;
+}
+.submit-button:hover {
+    background-color: #CCCCCC;
+}
+
+
+
+
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #252525;
+}
+.login-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 15px 15px -3px rgba(0, 0, 0, 0.304), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    background-color: #252525;
+    color: #E5E5E5;
+}
+.login-title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-family: 'Nunito semiBlod', sans-serif;
+}
+.form-group {
+    margin-bottom: 1rem;
+    font-family: 'Nunito regular', sans-serif;
+}
+.form-input {
+    width: 100%;
+    margin-top: 0.25rem;
+    background-color: #252525;
+    border-color: #E5E5E5;
+    color: #E5E5E5;
+    border-style: solid;
+    border-radius: 8px;
+    font-family: 'Nunito regular', sans-serif;
+}
+.submit-button {
+    width: 100%;
+    background-color: #E5E5E5;
+    color: #252525;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Nunito regular', sans-serif;
+}
+.submit-button:hover {
+    background-color: #CCCCCC;
+}
+
+
+
+
+.book-review {
+    font-family: 'Nunito regular', sans-serif;
+    background-color: #1C1C1E;
+    color: #FFFFFF;
+    border-radius: 20px;
+    padding: 18px;
+    max-width: 400px;
+    height: 90vh;
+    max-height: 90vh;
+    margin: 0 auto;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .icon-button {
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .icon-group {
+    display: flex;
+    gap: 16px;
+  }
+
+  .title {
+    font-size: 24px;
+    font-family: 'Nunito semiBlod', sans-serif;
+    font-weight: bold;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .content {
+    color: #E5E5E5;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .paragraph {
+    margin-bottom: 16px;
+  }
+
+  .italic {
+    font-style: italic;
+  }
