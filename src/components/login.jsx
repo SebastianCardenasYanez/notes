@@ -22,7 +22,7 @@ export default function LoginView() {
     let peticion = await fetch("https://localhost:5000/users/login", config);
 
     if (peticion.status === 200) {
-      navigate('/home');
+      navigate('/notes/home');
       console.log("logeado"); 
     }
   };
