@@ -5,7 +5,7 @@ export default function WelcomeView() {
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
-    navigate('/login');
+    navigate('/notes/login');
     // For Next.js, you would use:
     // import { useRouter } from 'next/router';
     // const router = useRouter();
@@ -13,7 +13,7 @@ export default function WelcomeView() {
   };
 
   const handleSignUpClick = () => {
-    navigate('/signup');
+    navigate('/notes/signup');
     // For Next.js:
     // router.push('/signup');
   };
