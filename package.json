@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "commonjs",
   "scripts": {
-    "start": "node --watch --env-file .env server/app.js",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
