@@ -1,40 +1,53 @@
 import React, { useState } from 'react';
-import addImg from '../storage/img/add.svg'
+import { ArrowLeft, Eye, Save } from 'lucide-react';
 
-export const AddNote = () => {
-  const [isOpen, setIsOpen] = useState(false)
+export const AddNote = ({ goBack }) => {
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
 
-  return (
-    <>
-    <div className='add-note-button' onClick={(e) => {setIsOpen}}>
-        <img src={addImg} alt="" />
-    </div>
-    { isOpen && (
-          <>
+    const handleSave = () => {
+        if (title && content) {
+            console.log("Guardando nota:", { title, content });
+            setTitle('');
+            setContent('');
+            goBack();
+        } else {
+            alert("Por favor completa el título y el contenido de la nota");
+        }
+    };
+
+    return (
+        <>
             <div className="book-review">
-              <div className="header">
-                <button className="icon-button" aria-label="Go back" onClick={goBack}>
-                  <ArrowLeft size={24} />
-                </button>
-                <div className="icon-group">
-                  <button className="icon-button" aria-label="View options">
-                    <Eye size={24} />
-                  </button>
-                  <button className="icon-button" aria-label="Save">
-                    <Save size={24} />
-                  </button>
+                <div className="header">
+                    <button className="icon-button" aria-label="Go back" onClick={goBack}>
+                        <ArrowLeft size={24} />
+                    </button>
+                    <div className="icon-group">
+                        <button className="icon-button" aria-label="View options">
+                            <Eye size={24} />
+                        </button>
+                        <button className="icon-button" aria-label="Save" onClick={handleSave}>
+                            <Save size={24} />
+                        </button>
+                    </div>
                 </div>
-              </div>
-              <h1 className="title"></h1>
-              <div className="content">
-                <p className="paragraph">
-                  
-                </p>
-              </div>
+                <input
+                    type="text"
+                    className="title-input"
+                    placeholder="Título de la nota"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                />
+                <div className="content">
+                    <textarea
+                        className="content-textarea"
+                        placeholder="Escribe tu nota aquí..."
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                    />
+                </div>
             </div>
-          </>
-        )
-    }
-    </>
-  )
-}
+        </>
+    );
+};
