@@ -1,5 +1,8 @@
 .env
 node_modules
+certificate.crt
+certificate.crt
+private.key
 
 # Logs
 logs
