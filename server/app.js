@@ -6,11 +6,11 @@ const error = require("./middelware/errorHandler");
 const session = require("./middelware/sessionConfig");
 const {auth} = require("./middelware/decodedJWT");
 
-const https = require("https");
-const fs = require("fs");
+// const https = require("https");
+// const fs = require("fs");
 
-const privateKey = fs.readFileSync("./private.key");
-const certificate = fs.readFileSync("./certificate.crt");
+// const privateKey = fs.readFileSync("./private.key");
+// const certificate = fs.readFileSync("./certificate.crt");
 const app = express();
 
 app.use(cors());
@@ -21,16 +21,21 @@ app.use(error.jsonParseErrorHandler);
 app.use("/users", userRouter);
 app.use("/notes", auth, noteRouter);
 
-const httpsServer = https.createServer({
-    key: privateKey,
-    cert: certificate
-}, app);
+// const httpsServer = https.createServer({
+//     key: privateKey,
+//     cert: certificate
+// }, app);
 
 app.get('/', (req, res) => {
     res.send("funca");
 })
 
+const config = {
+    port: process.env.EXPRESS_PORT,
+    host: process.env.EXPRESS_HOST
+}
+
 const port = 5000;
-httpsServer.listen(port, () => {
-    console.log(`Servidor HTTPS esta en el puerto https://localhost:${port}`);
+app.listen(config, () => {
+    console.log(`Servidor HTTPS esta en el puerto http://localhost:${config.port}`);
 })

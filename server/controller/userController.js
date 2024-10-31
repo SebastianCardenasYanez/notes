@@ -17,7 +17,7 @@ exports.addNewUser = async(req, res) =>{
         delete req.body.password;
         console.log("resultado del post", resultPost);
         req.body.id = resultPost.data.insertedId;
-        const SECRET_KEY = fs.readFileSync('./certificate.csr');
+        const SECRET_KEY = process.env.EXPRESS_SECRET_KEY;
         const token = jwt.sign(req.body, SECRET_KEY.toString('utf8'), {expiresIn: 1800000});
         req.session.auth = token;
         return res.status(202).json({status: 202, message: "User created and logged in"})
@@ -52,7 +52,7 @@ exports.signInUser = async(req, res) =>{
         if (!user) return res.status(404).json({ status: 404, message: "User not found" });
         const isMatch = await bcrypt.compare(password, user.data.password);
         if (!isMatch) return res.status(401).json({ status: 401, message: "Incorrect password" });
-        const SECRET_KEY = fs.readFileSync('./certificate.csr');
+        const SECRET_KEY = process.env.EXPRESS_SECRET_KEY;
         const token = jwt.sign({ id: user.data._id, email: user.data.email }, SECRET_KEY.toString('utf8'), { expiresIn: 1800000 });
         req.session.auth = token;
         console.log(token);

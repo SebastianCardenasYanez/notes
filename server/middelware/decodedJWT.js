@@ -3,7 +3,7 @@ const fs = require("fs");
 
 exports.auth = (req, res, next) => {
     try {
-        const SECRET_KEY = fs.readFileSync('./certificate.csr');
+        const SECRET_KEY = process.env.EXPRESS_SECRET_KEY;
         // console.log("==>",req.session.auth);
         
         // var payload = jwt.verify(req.session.auth, SECRET_KEY.toString('utf8'));
