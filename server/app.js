@@ -37,5 +37,5 @@ const config = {
 
 const port = 5000;
 app.listen(config, () => {
-    console.log(`Servidor HTTPS esta en el puerto http://localhost:${config.port}`);
+    console.log(`Servidor HTTP esta en el puerto http://${config.host}:${config.port}`);
 })

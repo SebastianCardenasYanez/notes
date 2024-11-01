@@ -9,8 +9,7 @@ const { ObjectId } = require("mongodb");
 exports.findAllNotes = async (req, res) => {
     try {
         const notes = new Note();
-        console.log(req.data);
-        let result = await notes.getAllNotes({id_user: "6718dd9a51d1d0d3a4fa040a"}); 
+        let result = await notes.getAllNotes({id_user: req.data._id}); 
         res.status(result.status).json(result);
     } catch (error) {
         let err = JSON.parse(error.message);
@@ -29,7 +28,7 @@ exports.findNoteById = async (req, res) => {
         //     ...req.params
         // }
         const data = {
-            id_user: '6718dd9a51d1d0d3a4fa040a',
+            id_user: req.data._id,
             ...req.params
         }
         const notes = new Note();
@@ -102,8 +101,8 @@ exports.save = async(req, res) =>{
 exports.updateNoteById = async(req, res) =>{
     try {
         const data = {
-            id: new ObjectId("671e88983f1ad01b1537d2db"),
-            id_user: '6718dd9a51d1d0d3a4fa040a',
+            id: new ObjectId(req.body.id),
+            id_user: req.data._id,
             ...req.body
         }
         const history = new History();
@@ -128,7 +127,7 @@ exports.updateNoteById = async(req, res) =>{
 exports.deleteNoteById = async(req, res) =>{
     try {
         const data = {
-            id_user: '6718dd9a51d1d0d3a4fa040a',
+            id_user: req.data._id,
             ...req.params
         }
         const notes = new Note();
