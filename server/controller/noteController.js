@@ -9,7 +9,7 @@ const { ObjectId } = require("mongodb");
 exports.findAllNotes = async (req, res) => {
     try {
         const notes = new Note();
-        let result = await notes.getAllNotes({id_user: req.data._id}); 
+        let result = await notes.getAllNotes({id_user: '6726ea7ba19296d0eef7c3f2'}); 
         res.status(result.status).json(result);
     } catch (error) {
         let err = JSON.parse(error.message);
@@ -85,7 +85,8 @@ exports.findNoteChangeHistory = async(req, res) =>{
 exports.save = async(req, res) =>{
     try {
         const notes = new Note();
-        let result = await notes.save(req.dody);
+        console.log("sapa", req.body);
+        let result = await notes.saveNote(req.body);
         if (result.status === 500) return res.status(500).json({status: 500, message : "Note not saved, someting happends"});
         return res.status(result.status).json({result});
     } catch (error) {
@@ -100,18 +101,15 @@ exports.save = async(req, res) =>{
  */
 exports.updateNoteById = async(req, res) =>{
     try {
-        const data = {
-            id: new ObjectId(req.body.id),
-            id_user: req.data._id,
-            ...req.body
-        }
+        console.log(req.body);
+        let data = req.body;
         const history = new History();
         let resultHistory = await history.updateHistorybyNoteId(data);
+        console.log(resultHistory);
         if (resultHistory.status === 500) return res.status(500).json({status: 500, message : "Note not saved, someting happends"});
-        history.destructor();
         const note = new Note();
         data.history = resultHistory.data.insertedId;
-        let resultNote = await note.updateHistoryNoteById(data);
+        let resultNote = await note.updateHistoryNoteById(data, req.params);
         if (resultNote.status === 500) return res.status(500).json({status: 500, message : "Note not saved, someting happends"});
         return res.status(resultNote.status).json({resultNote});
     } catch (error) {

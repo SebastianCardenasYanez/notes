@@ -19,7 +19,8 @@ app.use(session)
 app.use(error.jsonParseErrorHandler);
 
 app.use("/users", userRouter);
-app.use("/notes", auth, noteRouter);
+app.use("/notes",noteRouter);
+// app.use("/notes", auth, noteRouter);
 
 // const httpsServer = https.createServer({
 //     key: privateKey,

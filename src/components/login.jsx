@@ -19,7 +19,7 @@ export default function LoginView() {
       },
       body : JSON.stringify({ email, password })
     }
-    let peticion = await fetch("https://localhost:5000/users/login", config);
+    let peticion = await fetch("http://localhost:5000/users/login", config);
 
     if (peticion.status === 200) {
       navigate('/notes/home');

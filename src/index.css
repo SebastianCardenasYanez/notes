@@ -200,12 +200,14 @@
     font-weight: bold;
     margin-bottom: 16px;
     line-height: 1.2;
+    outline: none;
   }
 
   .content {
     color: #E5E5E5;
     font-size: 16px;
     line-height: 1.5;
+    outline: none;
   }
 
   .paragraph {

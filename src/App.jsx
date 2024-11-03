@@ -37,7 +37,7 @@ function MainContent() {
                 "x-version": "1.0.0"
             }
         };
-        let peticion = await fetch("https://localhost:5000/notes", config);
+        let peticion = await fetch("http://localhost:5000/notes", config);
 
         if (peticion.status === 200) {
             console.log("salio bien la peticion");
@@ -76,6 +76,7 @@ function MainContent() {
                             notes.map((note, index) => (
                                 <div
                                     key={index}
+                                    id={note._id}
                                     className="note"
                                     onClick={() => { setSelectedNote(note); setIsNoteView(true); }}
                                     style={{ backgroundColor: getRandomColor() }}

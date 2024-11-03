@@ -19,7 +19,9 @@ export default function SignUpView() {
       },
       body : JSON.stringify({ name, nickname, email, password })
     }
-    let peticion = await fetch("https://localhost:5000/users/", config);
+    console.log(config);
+    
+    let peticion = await fetch("http://localhost:5000/users/", config);
 
     if (peticion.status === 202) {
       navigate('/notes/home');

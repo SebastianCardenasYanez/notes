@@ -32,7 +32,7 @@ export const SearchNote = ({ isSearchVisible, setIsSearchVisible }) => {
           "x-version" : "1.0.0"
         }
       }
-      let peticion = await fetch(`https://localhost:5000/notes/search/${searchQuery}`, config);
+      let peticion = await fetch(`http://localhost:5000/notes/search/${searchQuery}`, config);
       let result = await peticion.json();
   
       if (result.result.data.length > 0) {

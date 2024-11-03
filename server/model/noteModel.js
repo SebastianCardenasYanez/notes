@@ -8,17 +8,12 @@ module.exports = class Notes extends ConnectMongodb {
     async getAllNotes ({id_user}) {
         try {
             const { status, message, data: db} = await this.getConnect();
-            const collection = db.collection("notes");
+            const collection = db.collection("notes");           
             const result = await collection.aggregate([
                 {
                     $match : {
                         status : 'visible',
                         user : new ObjectId(id_user)
-                    }
-                },
-                {
-                    $project : {
-                        _id : 0
                     }
                 }
             ]).toArray();            
@@ -79,27 +74,30 @@ module.exports = class Notes extends ConnectMongodb {
             throw new Error(JSON.stringify({ status: 500, message: "Error getting the note", data: error}));
         }
     }
-    async updateHistoryNoteById ({id, body, id_user, history}) {
+    async updateHistoryNoteById (body, id) {
         try {
             const data = {
                 title : body.title,
                 content : body.content,
-                date : new Date(),
+                date : new Date()
             }
+            console.log("mi mamma la gata",data, body);
             const { status, message, data: db} = await this.getConnect();
             const collection = db.collection("notes");
             const result = await collection.updateOne(
                 {    
-                    _id: new ObjectId(id),
-                    user : new ObjectId(id_user)
+                    _id: new ObjectId(id.id),
+                    user : new ObjectId(user)
                 },
                 {
                     $set : data,
                     $push : {
-                        history : new ObjectId(history)
+                        history : body.history
                     }
                 }
             );
+            console.log({status: 214, message: "Note updated", data: result});
+            
             return {status: 214, message: "Note updated", data: result};
         } catch (error){
             throw new Error(JSON.stringify({ status: 500, message: "Error getting the note", data: error}));
@@ -126,8 +124,13 @@ module.exports = class Notes extends ConnectMongodb {
             throw new Error(JSON.stringify({ status: 500, message: "Error deleting the note", data: error}));
         }
     }
-    async save ({ body }) {
+    async saveNote(body) {
         try {
+            console.log("hola",body);
+            body.date = new Date();
+            body.history = [];
+            body.user = new ObjectId('6726ea7ba19296d0eef7c3f2');
+            body.status = "visible";
             const { status, message, data: db} = await this.getConnect();
             const collection = db.collection("notes");
             const result = await collection.insertOne( body );

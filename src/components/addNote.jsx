@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Eye, Save } from 'lucide-react';
+import { body } from 'express-validator';
 
 export const AddNote = ({ goBack }) => {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
 
-    const handleSave = () => {
+    const handleSave = async () => {
         if (title && content) {
             console.log("Guardando nota:", { title, content });
             setTitle('');
             setContent('');
+            let config = {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  "x-version" : "1.0.0" 
+                },
+                body : JSON.stringify({ title, content })
+              }
+            console.log(config);
+            let peticion = await fetch(`http://localhost:5000/notes/`, config);
+            if (peticion.status !== 201) return alert("Ocurrio algo en la peticion")
             goBack();
         } else {
             alert("Por favor completa el título y el contenido de la nota");
@@ -32,7 +44,7 @@ export const AddNote = ({ goBack }) => {
                         </button>
                     </div>
                 </div>
-                <input
+                <textarea
                     type="text"
                     className="title-input"
                     placeholder="Título de la nota"
