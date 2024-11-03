@@ -5,15 +5,18 @@ module.exports = class History extends ConnectMongodb {
     constructor() {
         super();
     }
-    async updateHistorybyNoteId({id, user_id, body}){
+    async updateHistorybyNoteId(body){
         try {
+            console.log('zapato',body);
+            
             let data  = {
                 title: body.title,
-                description: body.description,
-                user_id: new ObjectId(user_id),
+                description: body.content,
+                user_id: new ObjectId(body.user),
                 modified_at: new Date(),
-                note_id: new ObjectId(id)
+                note_id: new ObjectId(body._id)
             }
+            console.log("hollaa", data);
             const { status, message, data: db} = await this.getConnect();
             const collection = db.collection("history");
             const result = await collection.insertOne(data);
