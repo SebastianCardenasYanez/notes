@@ -10,6 +10,16 @@ Currently, two official plugins are available:
 
 [TOC]
 
+# Iniciacion del proyecto
+
+debe cambiar a la rama `local` con `git checkout local` para poder utilizarlo de manera local
+
+`npm i` para installar las dependencias
+
+`npm run dev` en una terminal para levantar el servidor del front-end
+
+`npm run start` en una terminal para levantar el servidor del back-end
+
 # Descripción del Proyecto
 
 La **Aplicación de Notas** es una plataforma diseñada para facilitar la gestión de notas personales de los usuarios. Su principal objetivo es proporcionar un entorno sencillo y accesible donde los usuarios puedan crear, editar, visualizar y eliminar sus notas de manera eficiente. La aplicación cuenta con funcionalidades como la búsqueda de notas, autenticación de usuario y un historial de cambios, lo que permite a los usuarios organizar sus pensamientos y mantener un registro de sus ideas de forma segura y privada.
